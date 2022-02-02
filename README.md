@@ -1,8 +1,8 @@
-# Mandatory 5 : Discrete event simulation
+# TASK : Discrete event simulation
 
 Discrete event simulation models a domain as a sequence of events that instantaneously changes the state of the domain. This differs from continuous simulation, which is used in ship and flight simulators, and a large number of games.
 
-The difference is mainly due to the handling of time. Continous simulations try to run synchroneously with real time, while discrete event simulation skips over the time between events. This makes discrete event simulation less resource demanding than continuous simulation. Consequently discrete event simulations will run faster (or larger simulatons can be run on the same equipment.
+The difference is mainly due to the handling of time. Continous simulations try to run synchroneously with real time, while discrete event simulation skips over the time between events. This makes discrete event simulation less resource demanding than continuous simulation. Consequently discrete event simulations will run faster (or larger simulations can be run on the same equipment).
 
 Let's look at an example. If we have an event model of the customers in a supermarket, the first interesting event would be when the customer enters the supermarket. The customer will leave the supermarket through the checkouts som time later. How long he will stay in the supermarket, and how many products he will buy, will be computed by the simulation. If he, for example, spends 25 minutes in the supermarket buying 10 products, he will join the queue at the checkout 25 minutes after he entered.
 
@@ -50,6 +50,4 @@ The phrase "...a short time later" means that an event should happen later than 
 
 ### Hand in
 
-Hand in your programming project in a zip- or jar-file, in the hand-in folder in fronter. The deadline is specified in the course plan and in the hand-in folder.
-
-A skeleton project that can be used as a starting point will be published in a couple of days
+Hand in your programming project as Github repository. The deadline is specified in the course plan and in the hand-in folder.
