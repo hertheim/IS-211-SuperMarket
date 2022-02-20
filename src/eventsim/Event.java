@@ -5,7 +5,6 @@
  */
 package eventsim;
 
-
 /**
  * BAse class for events
  *
@@ -17,16 +16,13 @@ public abstract class Event {
      */
     int time;
 
-
     public Event(int time) {
         this.time = time;
     }
 
-
     public int getTime() {
         return time;
     }
-
 
     /**
      * Make the changes to the simulated supermarket that happens as a

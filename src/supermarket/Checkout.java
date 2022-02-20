@@ -20,9 +20,8 @@ public class Checkout {
     SuperMarket shop;
     String name;
 
-
     public Checkout(SuperMarket shop, int i) {
         this.shop = shop;
-        this.name = "Checkout" + i;
+        this.name = "Checkout-" + i;
     }
 }

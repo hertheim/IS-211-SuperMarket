@@ -5,6 +5,8 @@
  */
 package eventsim;
 
+import supermarket.SuperMarket;
+
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Random;
@@ -19,7 +21,7 @@ public class EventSim {
     /**
      * The one and only instance, i.e. this is a singleton class
      */
-    private static final EventSim theSim = new EventSim();
+    private static final EventSim simulation = new EventSim();
 
     /* The queue of events - those that happen earliest first */
     PriorityQueue<Event> eventQueue;
@@ -30,16 +32,18 @@ public class EventSim {
     int clock;
     Random random;
 
+    public EventSim() {
+        eventQueue = new PriorityQueue<>(new EventTimeComparator());
+        random = new Random(42);
+    }
 
     public static EventSim getInstance() {
-        return theSim;
+        return simulation;
     }
-
 
     public static int getClock() {
-        return theSim.clock;
+        return simulation.clock;
     }
-
 
     /**
      * Draw a random number in the interval min-max
@@ -49,15 +53,8 @@ public class EventSim {
      * @return
      */
     public static int nextInt(int min, int max) {
-        return min + theSim.random.nextInt(max - min);
+        return min + simulation.random.nextInt(max - min);
     }
-
-
-    public EventSim() {
-        eventQueue = new PriorityQueue<>(new EventTimeComparator());
-        random = new Random(42);
-    }
-
 
     /**
      * Prepare the simulation by adding a list of "start" events
@@ -65,17 +62,15 @@ public class EventSim {
      * @param initialEvents
      */
     public void setup(List<Event> initialEvents) {
-        for (Event e : initialEvents)
-            eventQueue.add(e);
+        for (Event event : initialEvents)
+            eventQueue.add(event);
     }
 
-
-    public void addEvent(Event e) {
-        if (null == e)
+    public void addEvent(Event event) {
+        if (event == null)
             return;
-        eventQueue.add(e);
+        eventQueue.add(event);
     }
-
 
     /**
      * Run the simulation. Advances the time (clock) to the time when the next
@@ -85,13 +80,13 @@ public class EventSim {
      */
     public void run() {
         while (!eventQueue.isEmpty()) {
-            Event e = eventQueue.poll();
-            clock = e.getTime();
-            addEvent(e.happen());
+            Event event = eventQueue.poll();
+            clock = event.getTime();
+            addEvent(event.happen());
 
-            System.err.format("Time %d: Processing %s. Event queue:\n", clock, e.toString());
-            for (Event qe : eventQueue)
-                System.err.println("     " + qe);
+            System.out.println("\nTime " + clock + ": Processing: " + event + " at " + "***insert checkout here***" + "\nEvent queue:");
+            for (Event queue : eventQueue)
+                System.out.println("     " + queue);
         }
     }
 }

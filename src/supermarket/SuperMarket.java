@@ -16,37 +16,29 @@ import java.util.List;
  * @author evenal
  */
 public class SuperMarket {
-
-    public static void main(String[] arts) {
-        SuperMarket supern = new SuperMarket();
-        supern.startSim();
-    }
-
     public static final int NUM_CHECKOUTS = 1;
-    public static final int NUM_CUSTOMERS = 4;
+    public static final int NUM_CUSTOMERS = 10;
 
-    Checkout[] checkouts;
-    List<Customer> customers;
-    List<Event> init;
-
+    private Checkout[] checkouts;
+    private List<Customer> customers;
+    private List<Event> events;
 
     public SuperMarket() {
         checkouts = new Checkout[NUM_CHECKOUTS];
         for (int i = 0; i < NUM_CHECKOUTS; i++)
             checkouts[i] = new Checkout(this, i);
         customers = new ArrayList<>();
-        init = new ArrayList<Event>();
+        events = new ArrayList<Event>();
         for (int i = 0; i < NUM_CUSTOMERS; i++) {
-            Customer c = new Customer(this, i);
-            init.add(new BeginShoppingEvent(c));
-            customers.add(c);
+            Customer customer = new Customer(this, i);
+            events.add(new BeginShoppingEvent(customer));
+            customers.add(customer);
         }
     }
 
-
     public void startSim() {
-        EventSim sim = EventSim.getInstance();
-        sim.setup(init);
-        sim.run();
+        EventSim simulation = EventSim.getInstance();
+        simulation.setup(events);
+        simulation.run();
     }
 }
