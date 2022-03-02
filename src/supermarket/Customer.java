@@ -14,7 +14,7 @@ import eventsim.EventSim;
  */
 public class Customer {
     // customer will pick a random number of products between these two values
-    public static final int MAX_PRODUCTS = 500;
+    public static final int MAX_PRODUCTS = 50;
     public static final int MIN_PRODUCTS = 1;
 
     // customer will spend random amount of time between these values before
@@ -24,6 +24,7 @@ public class Customer {
 
     SuperMarket shop;
     String name;
+    Checkout checkout;
 
     int beginShoppingTime;
     int shoppingDuration;
@@ -41,5 +42,6 @@ public class Customer {
         numProducts = EventSim.nextInt(MIN_PRODUCTS, MAX_PRODUCTS);
         shoppingDuration = EventSim.nextInt(MIN_SHOP_TIME, MAX_SHOP_TIME);
         endShoppingTime = beginShoppingTime + shoppingDuration;
+        checkoutDuration = (numProducts * Checkout.PROD_DURATION) + Checkout.PAY_DURATION;
     }
 }

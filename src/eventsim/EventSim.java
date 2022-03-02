@@ -84,7 +84,7 @@ public class EventSim {
             clock = event.getTime();
             addEvent(event.happen());
 
-            System.out.println("\nTime " + clock + ": Processing: " + event + " at " + "***insert checkout here***" + "\nEvent queue:");
+            System.out.println("\nTime " + clock + ": Processing: " + event + "\nEvent queue:");
             for (Event queue : eventQueue)
                 System.out.println("     " + queue);
         }
