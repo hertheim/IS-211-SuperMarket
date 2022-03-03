@@ -27,13 +27,13 @@ public class EndShoppingEvent extends Event {
 
     @Override
     public Event happen() {
-        return new BeginCheckoutEvent(customer);
+        return new EnterCheckoutQueueEvent(customer);
     }
 
 
     @Override
     public String toString() {
-        return "EndShoppingEvent for " + customer.name + " at time " + getTime() + ". Shopping duration: " + customer.shoppingDuration;
+        return customer.name + " has collected all it's items(" + customer.numProducts + "), and is done shopping.";
     }
 
 }

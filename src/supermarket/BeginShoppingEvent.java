@@ -23,7 +23,7 @@ public class BeginShoppingEvent extends Event {
 
     @Override
     public String toString() {
-        return "BeginShoppingEvent for " + customer.name;
+        return customer.name + " enters the shop, and starts shopping.";
     }
 
     @Override

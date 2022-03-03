@@ -1,7 +1,6 @@
 package supermarket;
 
 import eventsim.Event;
-import eventsim.EventSim;
 
 public class CheckoutEvent extends Event {
     Customer customer;
@@ -12,16 +11,13 @@ public class CheckoutEvent extends Event {
         this.customer = customer;
     }
 
-
     @Override
     public Event happen() {
-        customer.leaveTime = customer.checkoutTime + customer.checkoutDuration;
-        return null;
+        return new LeaveStoreEvent(customer);
     }
-
 
     @Override
     public String toString() {
-        return customer.name + " is checking out at time " + customer.checkoutTime + ".";
+        return customer.name + " is checking out.";
     }
 }

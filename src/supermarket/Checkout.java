@@ -47,13 +47,4 @@ public class Checkout {
         } else
             return customerAheadInQueue.leaveTime - customer.endShoppingTime;
     }
-
-
-    public SuperMarket getShop() {
-        return shop;
-    }
-
-    public String getName() {
-        return name;
-    }
 }

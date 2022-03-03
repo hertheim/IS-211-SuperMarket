@@ -3,14 +3,14 @@ package supermarket;
 
 import eventsim.Event;
 
-public class BeginCheckoutEvent extends Event{
+public class EnterCheckoutQueueEvent extends Event{
     Customer customer;
 
-    public BeginCheckoutEvent(Customer customer) {
-        super(customer.endShoppingTime);
+    public EnterCheckoutQueueEvent(Customer customer) {
+        super(customer.endShoppingTime + 1);
         this.customer = customer;
         customer.checkout = customer.shop.getShortestCheckoutQueue();
-        customer.checkoutTime = customer.endShoppingTime + customer.checkout.calculateQueueWaitDuration(customer);
+        customer.checkoutTime = customer.endShoppingTime + customer.checkout.calculateQueueWaitDuration(customer) + 1;
         customer.leaveTime = customer.checkoutTime + customer.checkoutDuration;
         customer.queueWaitDuration = customer.checkout.calculateQueueWaitDuration(customer);
         customer.shop.addToShortestCheckout(customer);
@@ -18,7 +18,7 @@ public class BeginCheckoutEvent extends Event{
 
     @Override
     public String toString() {
-        return "BeginCheckoutEvent for " + customer.name + ". At checkout: " + customer.checkout.getName() + ". Number of products: " + customer.numProducts + ". Leave time:" + customer.leaveTime;
+        return customer.name + " queues up at " + customer.checkout.name + ". The wait time is: " + customer.queueWaitDuration + ".";
     }
 
     @Override
