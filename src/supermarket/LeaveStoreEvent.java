@@ -19,6 +19,6 @@ public class LeaveStoreEvent extends Event {
 
     @Override
     public String toString() {
-        return customer.name + " is done checking out, and leaves the store at " + customer.leaveTime + ".";
+        return customer.name + " is done checking out, and leaves the store.";
     }
 }
