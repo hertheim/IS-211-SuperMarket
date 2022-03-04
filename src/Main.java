@@ -1,4 +1,3 @@
-import supermarket.Checkout;
 import supermarket.SuperMarket;
 
 public class Main {

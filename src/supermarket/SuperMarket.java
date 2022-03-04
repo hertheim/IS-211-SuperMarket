@@ -63,10 +63,6 @@ public class SuperMarket {
         getShortestCheckoutQueue().addCustomer(customer);
     }
 
-    public Checkout[] getCheckouts() {
-        return checkouts;
-    }
-
     public void startSim() {
         EventSim simulation = EventSim.getInstance();
         simulation.setup(events);
