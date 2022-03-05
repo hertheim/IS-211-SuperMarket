@@ -2,10 +2,10 @@ package supermarket;
 
 import eventsim.Event;
 
-public class EnterCheckoutQueueEvent extends Event{
+public class Event3_EnterCheckoutQueueEvent extends Event{
     Customer customer;
 
-    public EnterCheckoutQueueEvent(Customer customer) {
+    public Event3_EnterCheckoutQueueEvent(Customer customer) {
         super(customer.endShoppingTime + 1);
         this.customer = customer;
         customer.checkout = customer.shop.getShortestCheckoutQueue();
@@ -22,6 +22,6 @@ public class EnterCheckoutQueueEvent extends Event{
 
     @Override
     public Event happen() {
-        return new CheckoutEvent(customer);
+        return new Event4_CheckoutEvent(customer);
     }
 }

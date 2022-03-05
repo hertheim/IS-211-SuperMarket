@@ -2,17 +2,17 @@ package supermarket;
 
 import eventsim.Event;
 
-public class CheckoutEvent extends Event {
+public class Event4_CheckoutEvent extends Event {
     Customer customer;
 
-    public CheckoutEvent(Customer customer) {
+    public Event4_CheckoutEvent(Customer customer) {
         super(customer.checkoutTime);
         this.customer = customer;
     }
 
     @Override
     public Event happen() {
-        return new LeaveStoreEvent(customer);
+        return new Event5_LeaveStoreEvent(customer);
     }
 
     @Override

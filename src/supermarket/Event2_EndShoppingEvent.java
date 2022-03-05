@@ -14,11 +14,11 @@ import eventsim.EventSim;
  *
  * @author evenal
  */
-public class EndShoppingEvent extends Event {
+public class Event2_EndShoppingEvent extends Event {
     Customer customer;
 
 
-    public EndShoppingEvent(Customer customer) {
+    public Event2_EndShoppingEvent(Customer customer) {
         super(EventSim.getClock() + customer.shoppingDuration);
         this.customer = customer;
     }
@@ -28,9 +28,9 @@ public class EndShoppingEvent extends Event {
     public Event happen() {
         if(customer.numProducts == 0) {
             customer.leaveTime = customer.endShoppingTime + 1;
-            return new LeaveStoreEvent(customer);
+            return new Event5_LeaveStoreEvent(customer);
         }else {
-            return new EnterCheckoutQueueEvent(customer);
+            return new Event3_EnterCheckoutQueueEvent(customer);
         }
     }
 

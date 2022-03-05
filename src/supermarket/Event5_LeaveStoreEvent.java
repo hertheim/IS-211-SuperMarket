@@ -2,10 +2,10 @@ package supermarket;
 
 import eventsim.Event;
 
-public class LeaveStoreEvent extends Event {
+public class Event5_LeaveStoreEvent extends Event {
     Customer customer;
 
-    public LeaveStoreEvent(Customer customer) {
+    public Event5_LeaveStoreEvent(Customer customer) {
         super(customer.leaveTime);
         this.customer = customer;
     }

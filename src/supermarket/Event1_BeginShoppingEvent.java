@@ -12,10 +12,10 @@ import eventsim.Event;
  *
  * @author evenal
  */
-public class BeginShoppingEvent extends Event {
+public class Event1_BeginShoppingEvent extends Event {
     Customer customer;
 
-    public BeginShoppingEvent(Customer customer) {
+    public Event1_BeginShoppingEvent(Customer customer) {
         super(customer.beginShoppingTime);
         this.customer = customer;
     }
@@ -27,6 +27,6 @@ public class BeginShoppingEvent extends Event {
 
     @Override
     public Event happen() {
-        return new EndShoppingEvent(customer);
+        return new Event2_EndShoppingEvent(customer);
     }
 }

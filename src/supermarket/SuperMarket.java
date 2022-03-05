@@ -31,7 +31,7 @@ public class SuperMarket {
         events = new ArrayList<Event>();
         for (int i = 0; i < NUM_CUSTOMERS; i++) {
             Customer customer = new Customer(this, i);
-            events.add(new BeginShoppingEvent(customer));
+            events.add(new Event1_BeginShoppingEvent(customer));
             customers.add(customer);
         }
     }
