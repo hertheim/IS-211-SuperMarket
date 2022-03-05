@@ -60,8 +60,7 @@ public class EventSim {
      * @param initialEvents
      */
     public void setup(List<Event> initialEvents) {
-        for (Event event : initialEvents)
-            eventQueue.add(event);
+        eventQueue.addAll(initialEvents);
     }
 
     public void addEvent(Event event) {

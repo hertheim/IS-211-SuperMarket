@@ -7,15 +7,14 @@ package supermarket;
 
 import eventsim.EventSim;
 
-
 /**
  *
  * @author evenal
  */
 public class Customer {
     // customer will pick a random number of products between these two values
-    public static final int MAX_PRODUCTS = 50;
-    public static final int MIN_PRODUCTS = 1;
+    public static final int MAX_PRODUCTS = 20;
+    public static final int MIN_PRODUCTS = 0;
 
     // customer will spend random amount of time between these values before
     // going to check out
@@ -38,7 +37,7 @@ public class Customer {
     public Customer(SuperMarket shop, int time) {
         this.shop = shop;
         name = "Customer-" + time;
-        beginShoppingTime = time;
+        beginShoppingTime = EventSim.nextInt(0, 50);
         numProducts = EventSim.nextInt(MIN_PRODUCTS, MAX_PRODUCTS);
         shoppingDuration = EventSim.nextInt(MIN_SHOP_TIME, MAX_SHOP_TIME);
         endShoppingTime = beginShoppingTime + shoppingDuration;

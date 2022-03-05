@@ -1,6 +1,5 @@
 package supermarket;
 
-
 import eventsim.Event;
 
 public class EnterCheckoutQueueEvent extends Event{

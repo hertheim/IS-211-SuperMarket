@@ -5,7 +5,6 @@
  */
 package supermarket;
 
-
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -14,7 +13,7 @@ import java.util.LinkedList;
  * @author evenal
  */
 public class Checkout {
-    // amount of time per prouct (to scan barcode)
+    // amount of time per product (to scan barcode)
     public static final int PROD_DURATION = 2;
     // amount of time to pay
     public static final int PAY_DURATION = 10;

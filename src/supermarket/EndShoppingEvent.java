@@ -8,7 +8,6 @@ package supermarket;
 import eventsim.Event;
 import eventsim.EventSim;
 
-
 /**
  * A customer finishes shopping and heads for the checkout with the shortest
  * queue
@@ -27,13 +26,22 @@ public class EndShoppingEvent extends Event {
 
     @Override
     public Event happen() {
-        return new EnterCheckoutQueueEvent(customer);
+        if(customer.numProducts == 0) {
+            customer.leaveTime = customer.endShoppingTime + 1;
+            return new LeaveStoreEvent(customer);
+        }else {
+            return new EnterCheckoutQueueEvent(customer);
+        }
     }
 
 
     @Override
     public String toString() {
-        return customer.name + " has collected all it's items(" + customer.numProducts + "), and is done shopping.";
+        if(customer.numProducts == 0) {
+            return customer.name + " decided not to buy anything, and is done shopping.";
+        }else{
+            return customer.name + " has collected all it's items(" + customer.numProducts + "), and is done shopping.";
+        }
     }
 
 }
