@@ -8,11 +8,11 @@ public class Checkout_Event_4 extends Event {
     public Checkout_Event_4(Customer customer) {
         super(customer.checkoutTime + 1);
         this.customer = customer;
+        customer.checkoutTime ++;
     }
 
     @Override
     public Event happen() {
-        customer.checkoutTime ++;
         customer.leaveTime = customer.checkoutTime + customer.checkoutDuration;
         customer.checkout.lastCustomerServedTime = customer.leaveTime;
         customer.checkout.setMaxQueueSize(customer.checkout.customers.size());
