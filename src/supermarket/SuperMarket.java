@@ -15,8 +15,8 @@ import java.util.List;
  * @author evenal
  */
 public class SuperMarket {
-    public static final int NUM_CHECKOUTS = 2;
-    public static final int NUM_CUSTOMERS = 10;
+    public static final int NUM_CHECKOUTS = 3;
+    public static final int NUM_CUSTOMERS = 50;
 
     private Checkout[] checkouts;
     private List<Customer> customers;

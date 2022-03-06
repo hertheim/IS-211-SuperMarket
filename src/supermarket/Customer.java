@@ -13,12 +13,12 @@ import eventsim.EventSim;
  */
 public class Customer {
     // customer will pick a random number of products between these two values
-    public static final int MAX_PRODUCTS = 100;
+    public static final int MAX_PRODUCTS = 50;
     public static final int MIN_PRODUCTS = 0;
 
     // customer will spend random amount of time between these values before
     // going to check out
-    public static final int MAX_SHOP_TIME = 50;
+    public static final int MAX_SHOP_TIME = 100;
     public static final int MIN_SHOP_TIME = 1;
 
     SuperMarket shop;
