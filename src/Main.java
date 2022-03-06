@@ -11,9 +11,9 @@ public class Main {
             System.out.println(checkout.getName() + ":");
             System.out.println("    " + checkout.getName() + " had a maximum queue size of " + checkout.getMaxQueueSize() + ".");
             System.out.println("    " + checkout.getName() + " had a average queue size of " + checkout.getAverageQueueSize() + ".");
-            System.out.println("    " + checkout.getName() + " had a total queue wait duration of " + checkout.getTotalQueueWaitDuration() + " time units.");
-            System.out.println("    Customers at " + checkout.getName() + " had a average queue wait duration of " + checkout.getAverageQueueWaitDurationPerCustomer() + " time units.");
-            System.out.println("    Longest queue wait duration was " + checkout.getMaxQueueWaitDuration() + ".\n");
+            System.out.println("    " + checkout.getName() + " had a total queue wait duration of " + checkout.getTotalQueueWaitDuration() + ".");
+            System.out.println("    Customers at " + checkout.getName() + " had a average queue wait duration of " + checkout.getAverageQueueWaitDurationPerCustomer() + ".");
+            System.out.println("    Longest queue wait duration for a single customer was " + checkout.getMaxQueueWaitDuration() + ".\n");
         }
     }
 }
