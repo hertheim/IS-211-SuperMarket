@@ -6,12 +6,14 @@ public class Checkout_Event_4 extends Event {
     Customer customer;
 
     public Checkout_Event_4(Customer customer) {
-        super(customer.checkoutTime);
+        super(customer.checkoutTime + 1);
         this.customer = customer;
     }
 
     @Override
     public Event happen() {
+        customer.checkoutTime += 1;
+        customer.leaveTime = customer.checkoutTime + customer.checkoutDuration;
         customer.checkout.lastCustomerServedTime = customer.leaveTime;
         customer.checkout.setMaxQueueSize(customer.checkout.customers.size());
         return new LeaveStore_Event_5(customer);
@@ -19,6 +21,6 @@ public class Checkout_Event_4 extends Event {
 
     @Override
     public String toString() {
-        return customer.name + " is checking out.";
+        return customer.name + " is checking out at " + customer.checkout.name + ".";
     }
 }
