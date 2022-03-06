@@ -66,7 +66,6 @@ public class SuperMarket {
         return checkouts;
     }
 
-
     public void startSim() {
         EventSim simulation = EventSim.getInstance();
         simulation.setup(events);

@@ -24,7 +24,7 @@ public class Checkout {
     SuperMarket shop;
     String name;
     Deque<Customer> customers;
-    double totalQueueWaitDuration;
+    int totalQueueWaitDuration;
     // Combined queue wait time for all the checkouts customers
     double averageQueueWaitDurationCustomer;
     // Average queue wait time for customers = totalQueueWaitDuration / totalQueueSize
@@ -70,10 +70,6 @@ public class Checkout {
             totalQueueLength += customers.size() * numberOfTimeIntervals;
     }
 
-    public int getTotalQueueLength() {
-        return totalQueueLength;
-    }
-
     public int getMaxQueueSize() {
         return maxQueueSize;
     }
@@ -104,7 +100,7 @@ public class Checkout {
         return averageQueueWaitDurationCustomer;
     }
 
-    public double getTotalQueueWaitDuration() {
+    public int getTotalQueueWaitDuration() {
         return totalQueueWaitDuration;
     }
 }
