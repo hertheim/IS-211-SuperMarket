@@ -1,6 +1,7 @@
 package supermarket;
 
 import eventsim.Event;
+import eventsim.EventSim;
 
 public class LeaveStore_Event_5 extends Event {
     Customer customer;
@@ -15,6 +16,7 @@ public class LeaveStore_Event_5 extends Event {
         if(customer.numProducts == 0) {
             return null;
         }else {
+            customer.checkout.calculateTotalQueueLength(EventSim.getClock());
             customer.checkout.customers.remove(customer);
             return null;
         }

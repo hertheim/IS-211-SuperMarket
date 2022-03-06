@@ -1,6 +1,7 @@
 package supermarket;
 
 import eventsim.Event;
+import eventsim.EventSim;
 
 public class EnterCheckoutQueue_Event_3 extends Event{
     Customer customer;
@@ -14,6 +15,7 @@ public class EnterCheckoutQueue_Event_3 extends Event{
         customer.queueWaitDuration = customer.checkout.calculateQueueWaitDuration(customer);
         customer.checkout.totalQueueWaitDuration += customer.queueWaitDuration;
         customer.checkout.totalQueueSize ++;
+        customer.checkout.calculateTotalQueueLength(EventSim.getClock() + 1);
         customer.shop.addToShortestCheckout(customer);
     }
 

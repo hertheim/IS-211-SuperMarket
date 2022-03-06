@@ -5,6 +5,8 @@
  */
 package supermarket;
 
+import eventsim.EventSim;
+
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -25,8 +27,8 @@ public class Checkout {
     double totalQueueWaitDuration;
     // Combined queue wait time for all the checkouts customers
     double averageQueueWaitDurationCustomer;
-    // Average queue wait time for customers = totalQueueWaitDuration / Supermarket.NUM_CUSTOMERS
-    int lastCustomerServedTime;
+    // Average queue wait time for customers = totalQueueWaitDuration / totalQueueSize
+    double lastCustomerServedTime;
     // Last time a customer is served by the checkout
     double averageQueueWaitDurationCheckout;
     // Average queue wait duration for the checkout = totalQueueWaitDuration / lastCustomerServedTime
@@ -35,12 +37,15 @@ public class Checkout {
     double totalQueueSize;
     // Total amount of customers that used the checkout
     double averageQueueSize;
-    // Average queue size during simulation = totalQueueSize / lastCustomerServedTime
+    // Average queue size during simulation = calculateTotalQueueLength() / lastCustomerServedTime
+    int totalQueueLength;
+    int timeOfLastChangeInQueueLength;
 
     public Checkout(SuperMarket shop, int i) {
         this.shop = shop;
         this.name = "Checkout-" + i;
         this.customers = new LinkedList<>();
+        this.timeOfLastChangeInQueueLength = EventSim.getClock();
     }
 
     public void addCustomer(Customer customer) {
@@ -61,12 +66,22 @@ public class Checkout {
         }
     }
 
+    public void calculateTotalQueueLength(int currentTime) {
+            int numberOfTimeIntervals = currentTime - timeOfLastChangeInQueueLength;
+            timeOfLastChangeInQueueLength = currentTime;
+            totalQueueLength += customers.size() * numberOfTimeIntervals;
+    }
+
+    public int getTotalQueueLength() {
+        return totalQueueLength;
+    }
+
     public int getMaxQueueSize() {
         return maxQueueSize;
     }
 
     public void calculateAverageQueueSize() {
-        averageQueueSize = totalQueueSize / lastCustomerServedTime;
+        averageQueueSize = totalQueueLength / lastCustomerServedTime;
     }
 
     public double getAverageQueueSize() {
@@ -83,7 +98,7 @@ public class Checkout {
     }
 
     public void calculateAverageQueueWaitDurationPerCustomer() {
-        averageQueueWaitDurationCustomer = totalQueueWaitDuration / SuperMarket.NUM_CUSTOMERS;
+        averageQueueWaitDurationCustomer = totalQueueWaitDuration / totalQueueSize;
     }
 
     public void calculateAverageQueueWaitDurationPerCheckout() {
