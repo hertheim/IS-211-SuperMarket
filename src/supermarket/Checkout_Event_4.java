@@ -12,7 +12,7 @@ public class Checkout_Event_4 extends Event {
 
     @Override
     public Event happen() {
-        customer.checkoutTime += 1;
+        customer.checkoutTime ++;
         customer.leaveTime = customer.checkoutTime + customer.checkoutDuration;
         customer.checkout.lastCustomerServedTime = customer.leaveTime;
         customer.checkout.setMaxQueueSize(customer.checkout.customers.size());

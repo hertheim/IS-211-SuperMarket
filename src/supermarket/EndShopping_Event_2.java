@@ -27,7 +27,7 @@ public class EndShopping_Event_2 extends Event {
     @Override
     public Event happen() {
         if(customer.numProducts == 0) {
-            customer.leaveTime = customer.endShoppingTime + 1;
+            customer.leaveTime = customer.endShoppingTime ++;
             return new LeaveStore_Event_5(customer);
         }else {
             return new EnterCheckoutQueue_Event_3(customer);
