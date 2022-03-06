@@ -18,6 +18,7 @@ public class EnterCheckoutQueue_Event_3 extends Event{
         customer.checkout.calculateTotalQueueLength(EventSim.getClock() + 1);
         customer.shop.addToShortestCheckout(customer);
         customer.checkout.setMaxQueueSize();
+        customer.checkout.setMaxQueueWaitDuration(customer.queueWaitDuration);
     }
 
     @Override

@@ -38,6 +38,7 @@ public class Checkout {
     // Average queue size during simulation = calculateTotalQueueLength() / lastCustomerServedTime
     int totalQueueLength;
     int timeOfLastChangeInQueueLength;
+    int maxQueueWaitDuration;
 
     public Checkout(SuperMarket shop, int i) {
         this.shop = shop;
@@ -62,6 +63,16 @@ public class Checkout {
         if(this.maxQueueSize < customers.size()) {
             this.maxQueueSize = customers.size();
         }
+    }
+
+    public void setMaxQueueWaitDuration(int maxQueueWaitDuration) {
+        if(this.maxQueueWaitDuration < maxQueueWaitDuration) {
+            this.maxQueueWaitDuration = maxQueueWaitDuration;
+        }
+    }
+
+    public int getMaxQueueWaitDuration() {
+        return maxQueueWaitDuration;
     }
 
     public void calculateTotalQueueLength(int currentTime) {
