@@ -12,21 +12,21 @@ import eventsim.Event;
  *
  * @author evenal
  */
-public class Event1_BeginShoppingEvent extends Event {
+public class BeginShopping_Event_1 extends Event {
     Customer customer;
 
-    public Event1_BeginShoppingEvent(Customer customer) {
+    public BeginShopping_Event_1(Customer customer) {
         super(customer.beginShoppingTime);
         this.customer = customer;
     }
 
     @Override
     public String toString() {
-        return customer.name + " enters the shop, and starts shopping.";
+        return customer.name + " enters the supermarket, and starts shopping.";
     }
 
     @Override
     public Event happen() {
-        return new Event2_EndShoppingEvent(customer);
+        return new EndShopping_Event_2(customer);
     }
 }

@@ -31,7 +31,7 @@ public class SuperMarket {
         events = new ArrayList<Event>();
         for (int i = 0; i < NUM_CUSTOMERS; i++) {
             Customer customer = new Customer(this, i);
-            events.add(new Event1_BeginShoppingEvent(customer));
+            events.add(new BeginShopping_Event_1(customer));
             customers.add(customer);
         }
     }
@@ -61,6 +61,11 @@ public class SuperMarket {
     public void addToShortestCheckout(Customer customer) {
         getShortestCheckoutQueue().addCustomer(customer);
     }
+
+    public Checkout[] getCheckouts() {
+        return checkouts;
+    }
+
 
     public void startSim() {
         EventSim simulation = EventSim.getInstance();
