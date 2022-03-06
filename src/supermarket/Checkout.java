@@ -30,8 +30,6 @@ public class Checkout {
     // Average queue wait time for customers = totalQueueWaitDuration / totalQueueSize
     double lastCustomerServedTime;
     // Last time a customer is served by the checkout
-    double averageQueueWaitDurationCheckout;
-    // Average queue wait duration for the checkout = totalQueueWaitDuration / lastCustomerServedTime
     int maxQueueSize;
     // Largest queue size during simulation
     double totalQueueSize;
@@ -60,9 +58,9 @@ public class Checkout {
         return name;
     }
 
-    public void setMaxQueueSize(int queueSize) {
-        if(this.maxQueueSize < queueSize) {
-            this.maxQueueSize = queueSize;
+    public void setMaxQueueSize() {
+        if(this.maxQueueSize < customers.size()) {
+            this.maxQueueSize = customers.size();
         }
     }
 
@@ -101,17 +99,12 @@ public class Checkout {
         averageQueueWaitDurationCustomer = totalQueueWaitDuration / totalQueueSize;
     }
 
-    public void calculateAverageQueueWaitDurationPerCheckout() {
-        averageQueueWaitDurationCheckout = totalQueueWaitDuration / lastCustomerServedTime;
-    }
-
-    public double getAverageQueueWaitDurationPerCheckout() {
-        calculateAverageQueueWaitDurationPerCheckout();
-        return averageQueueWaitDurationCheckout;
-    }
-
     public double getAverageQueueWaitDurationPerCustomer() {
         calculateAverageQueueWaitDurationPerCustomer();
         return averageQueueWaitDurationCustomer;
+    }
+
+    public double getTotalQueueWaitDuration() {
+        return totalQueueWaitDuration;
     }
 }
